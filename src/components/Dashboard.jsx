@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 
 export default function Dashboard() {
+  const apiURL = import.meta.env.VITE_API_URL;
+
   const [data, setData] = useState([]);
   const fetchData = async () => {
-    const res = await fetch("http://localhost:3000/api/form/");
+    const res = await fetch(`${apiURL}/api/form`);
     const data = await res.json();
     setData(data);
   };

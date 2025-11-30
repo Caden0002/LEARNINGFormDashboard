@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 export default function Form() {
-  const apiURL = "http://localhost:3000/api/form/";
+  const apiURL = import.meta.env.VITE_API_URL;
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(apiURL, {
+    const res = await fetch(`${apiURL}/api/form}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
